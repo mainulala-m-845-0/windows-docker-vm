@@ -11,6 +11,8 @@ RAM_SIZE = "32G"
 CPU_CORES = "12"
 DISK_SIZE = "500G"
 STORAGE_PATH = "/storage"
+KVM = "N"
+USER_PORTS = "3389 8006"
 
 [service.win11-vm.storage.win11-data]
 mountPath = "/storage"
