@@ -29,7 +29,7 @@ RUN set -eu && \
 COPY --chmod=755 ./src /run/
 COPY --chmod=755 ./assets /run/assets
 
-# Add helpers from Dockur project
+# Add helpers (Dockur related)
 ADD --chmod=755 https://raw.githubusercontent.com/christgau/wsdd/refs/tags/v0.9/src/wsdd.py /usr/sbin/wsdd
 ADD --chmod=664 https://github.com/qemus/virtiso-whql/releases/download/v1.9.47-0/virtio-win-1.9.47.tar.xz /var/drivers.txz
 
@@ -50,9 +50,9 @@ EXPOSE 3389 8006
 
 # Default environment for Railway
 ENV VERSION="11" \
-    RAM_SIZE="32G" \
-    CPU_CORES="12" \
-    DISK_SIZE="500G" \
+    RAM_SIZE="4G" \
+    CPU_CORES="2" \
+    DISK_SIZE="64G" \
     STORAGE_PATH="/storage" \
     KVM="N" \
     USER_PORTS="3389 8006"
