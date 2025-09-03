@@ -1,10 +1,8 @@
 [build]
-# Use your Dockerfile
 builder = "dockerfile"
 dockerfilePath = "Dockerfile"
 
 [service.win11-vm]
-# Service name matches your container
 startCommand = "/usr/bin/tini -s /run/entry.sh"
 
 [service.win11-vm.environment]
@@ -14,7 +12,5 @@ CPU_CORES = "12"
 DISK_SIZE = "500G"
 STORAGE_PATH = "/storage"
 
-[service.win11-vm.storage]
-# This creates persistent storage at /storage
+[service.win11-vm.storage.win11-data]
 mountPath = "/storage"
-name = "win11-data"
