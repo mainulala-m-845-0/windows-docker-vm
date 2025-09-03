@@ -7,9 +7,9 @@ startCommand = "/usr/bin/tini -s /run/entry.sh"
 
 [service.win11-vm.environment]
 VERSION = "11"
-RAM_SIZE = "32G"
-CPU_CORES = "12"
-DISK_SIZE = "500G"
+RAM_SIZE = "4G"
+CPU_CORES = "2"
+DISK_SIZE = "64G"
 STORAGE_PATH = "/storage"
 KVM = "N"
 USER_PORTS = "3389 8006"
