@@ -1,19 +1,29 @@
+version: "3.9"
+
 services:
-  windows:
-    image: dockurr/windows
-    container_name: windows
+  win11-vm:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VERSION_ARG: "latest"
+    container_name: win11-vm
+    # Ports we EXPOSED in Dockerfile → map to host for local dev
+    ports:
+      - "3389:3389"   # RDP
+      - "8006:8006"   # management/web interface?
+    # Persistent volume mount (local bind mount for dev)
+    volumes:
+      - win11-data:/storage
     environment:
       VERSION: "11"
-    devices:
-      - /dev/kvm
-      - /dev/net/tun
-    cap_add:
-      - NET_ADMIN
-    ports:
-      - 8006:8006
-      - 3389:3389/tcp
-      - 3389:3389/udp
-    volumes:
-      - ./windows:/storage
-    restart: always
-    stop_grace_period: 2m
+      RAM_SIZE: "32G"
+      CPU_CORES: "12"
+      DISK_SIZE: "500G"
+      STORAGE_PATH: "/storage"
+    # Always good to restart unless manually stopped
+    restart: unless-stopped
+
+volumes:
+  win11-data:
+    driver: local
